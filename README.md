@@ -1,7 +1,9 @@
-- 👋 Hi, I’m [@KoRrNiK](https://github.com/KoRrNiK/)
+## Hello :)
+
+- 👋 Hi, I’m [**_@KoRrNiK_**](https://github.com/KoRrNiK/)
 - 📫 How to reach me
 > Discord: KoRrNiK#3933 \
-> Steam: [@Steam](https://steamcommunity.com/id/korrnik)
+> Steam: [**_@Steam_**](https://steamcommunity.com/id/korrnik)
 - 🌱 My works 
-> BaseBuilder: [@BaseBuilder](https://github.com/KoRrNiK/BaseBuilder-TURBO)
+> BaseBuilder: [**_@BaseBuilder_**](https://github.com/KoRrNiK/BaseBuilder-TURBO)
 
