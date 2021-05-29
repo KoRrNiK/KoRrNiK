@@ -6,5 +6,6 @@
 > Steam: [**_@Steam_**](https://steamcommunity.com/id/korrnik)
 - 🌱 My works 
 > BaseBuilder: [**_@BaseBuilder_**](https://github.com/KoRrNiK/BaseBuilder-TURBO) \
-> RtCW Fov Changer: [**_@RtCW-FOV_**](https://github.com/KoRrNiK/rtcw_fov-changer) 
+> RtCW Fov Changer: [**_@RtCW-FOV_**](https://github.com/KoRrNiK/rtcw_fov-changer) \
+> RtCW Speedometer: [**_@RtCW-Speed_**](https://github.com/KoRrNiK/rtcw_speedometer) 
 
