@@ -1,4 +1,6 @@
-## Hello :)
+
+### Hello :)
+<img align="right" src="https://github-readme-stats.vercel.app/api?username=KoRrNiK&show_icons=true&theme=dark" />
 
 - 👋 Hi, I’m [**_@KoRrNiK_**](https://github.com/KoRrNiK/)
 - 📫 How to reach me
