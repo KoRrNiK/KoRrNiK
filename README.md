@@ -25,10 +25,10 @@
 
   | Program  | Link | Version |
   | -------- | ---- | ------- |
-  | RtCW Fov Changer | [**_Click_**](https://github.com/KoRrNiK/rtcw_fov-changer) | [1.0.4](https://github.com/KoRrNiK/rtcw_fov-changer/releases/tag/1.0.4) |
-  | RtCW Speedometer | [**_Click_**](https://github.com/KoRrNiK/rtcw_speedometer) | [1.0.3](https://github.com/KoRrNiK/rtcw_speedometer/releases/tag/1.0.3) |
-  | RtCW Secret Info | [**_Click_**](https://github.com/KoRrNiK/rtcw_secret-treasure_info) | [1.0.0](https://github.com/KoRrNiK/rtcw_secret-treasure_info/releases/tag/1.0.0) |
-  | RtCW PATCH 1.45a | [**_Click_**](https://github.com/KoRrNiK/RtCW-Patch_145a) | [1.45a](https://github.com/KoRrNiK/RtCW-Patch_145a/releases/tag/1.45a)
+  | Fov Changer | [**_Click_**](https://github.com/KoRrNiK/rtcw_fov-changer) | [1.0.4](https://github.com/KoRrNiK/rtcw_fov-changer/releases/tag/1.0.4) |
+  | Speedometer | [**_Click_**](https://github.com/KoRrNiK/rtcw_speedometer) | [1.0.3](https://github.com/KoRrNiK/rtcw_speedometer/releases/tag/1.0.3) |
+  | Secret Info | [**_Click_**](https://github.com/KoRrNiK/rtcw_secret-treasure_info) | [1.0.0](https://github.com/KoRrNiK/rtcw_secret-treasure_info/releases/tag/1.0.0) |
+  | PATCH 1.45a | [**_Click_**](https://github.com/KoRrNiK/RtCW-Patch_145a) | [1.45a](https://github.com/KoRrNiK/RtCW-Patch_145a/releases/tag/1.45a)
 
 </details>
 
