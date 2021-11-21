@@ -3,7 +3,7 @@
 
 <details>
   <summary> ⚡ Github Stats  </summary>
-  <img align="right" src="https://github-readme-stats.vercel.app/api?username=KoRrNiK&show_icons=true&theme=github_dark  " />
+  <img align="right" src="https://github-readme-stats.vercel.app/api?username=KoRrNiK&show_icons=true&theme=github_dark">
 </details>
 
 - 👋 Hi, I’m [**_@KoRrNiK_**](https://github.com/KoRrNiK/)
@@ -17,9 +17,9 @@
   
   #### <img src="https://i.imgur.com/T0do8Gf.png" /> Counter-Strike 1.6
   
-  | Plugin  | Link | Version |
-  | ------- | ---- | ------- |
-  | BaseBuilder | [**_Click_**](https://github.com/KoRrNiK/BaseBuilder-TURBO) | [1.3.10](https://github.com/KoRrNiK/BaseBuilder-TURBO/releases/tag/1.3.10) |
+  | Plugin  | Link | Version | Description |
+  | ------- | ---- | ------- | ----------- |
+  | BaseBuilder | [**_Click_**](https://github.com/KoRrNiK/BaseBuilder-TURBO) | [1.3.10](https://github.com/KoRrNiK/BaseBuilder-TURBO/releases/tag/1.3.10) | <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=KoRrNiK&repo=BaseBuilder-TURBO&theme=github_dark"> |
   
   #### <img src="https://i.imgur.com/tlf5WTd.png" /> Return to Castle Wolfenstein
 
