@@ -13,7 +13,7 @@
 
 <details>
   
-  <summary> 🌱 My works  </summary>
+  <summary> 🪚 My works  </summary>
   
   #### <img src="https://i.imgur.com/T0do8Gf.png" /> Counter-Strike 1.6
   
