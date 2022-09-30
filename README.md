@@ -1,37 +1,29 @@
 
-## Hello :)
 
-<details>
-  <summary> ⚡ Github Stats  </summary>
-  <img align="right" src="https://github-readme-stats.vercel.app/api?username=KoRrNiK&show_icons=true&theme=github_dark">
-</details>
+<a href="https://discord.com/users/292279578389643264" target="_blank">
+    <img width="50%" align="right" alt="Discord Status" src="https://lanyard-profile-readme.vercel.app/api/292279578389643264?bg=161B22&borderRadius=5px%205px%200%200&animated=true&hideDiscrim=true&idleMessage=Probably%20doing%20something%20else...">
+</a>
+<a href="https://wakatime.com/@KoRrNiK" target="_blank">
+    <img width="50%" align="right" alt="Weekly Stats" src="https://github-readme-stats.vercel.app/api/wakatime?username=korrnik&border_radius=0%200%205px%205px&theme=dark&bg_color=161B22&border_color=161B22&icon_color=58a6ff&show_icons=true&disable_animations=true&custom_title=Weekly%20Stats">
+</a>
 
-- 👋 Hi, I’m [**_@KoRrNiK_**](https://github.com/KoRrNiK/)
-- 📫 How to reach me
--  <img src="https://i.imgur.com/c2QklvA.png" /> KoRrNiK#3933 
--  <img src="https://i.imgur.com/vdeWkhe.png" /> [**KoRrNiK** ](https://steamcommunity.com/id/korrnik)
+<br><br>
 
-<details>
-  
-  <summary> 🪚 My works  </summary>
-  
-  #### <img src="https://i.imgur.com/T0do8Gf.png" /> Counter-Strike 1.6
-  
-  | Plugin  | Link | Version | Description |
-  | ------- | ---- | ------- | ----------- |
-  | BaseBuilder | [**_Click_**](https://github.com/KoRrNiK/BaseBuilder-TURBO) | [1.3.10](https://github.com/KoRrNiK/BaseBuilder-TURBO/releases/tag/1.3.10) | <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=KoRrNiK&repo=BaseBuilder-TURBO&theme=github_dark"> |
-  | AMXX_PLUGINS | Soon | Soon | Soon |
-  | Top Time | Soon | Soon | Soon |
-  
-  #### <img src="https://i.imgur.com/tlf5WTd.png" /> Return to Castle Wolfenstein
+# Hello 👋
 
-  | Program  | Link | Version |
-  | -------- | ---- | ------- |
-  | Fov Changer | [**_Click_**](https://github.com/KoRrNiK/rtcw_fov-changer) | [1.0.4](https://github.com/KoRrNiK/rtcw_fov-changer/releases/tag/1.0.4) |
-  | Speedometer | [**_Click_**](https://github.com/KoRrNiK/rtcw_speedometer) | [1.0.3](https://github.com/KoRrNiK/rtcw_speedometer/releases/tag/1.0.3) |
-  | Secret Info | [**_Click_**](https://github.com/KoRrNiK/rtcw_secret-treasure_info) | [1.0.0](https://github.com/KoRrNiK/rtcw_secret-treasure_info/releases/tag/1.0.0) |
-  | PATCH 1.45a | [**_Click_**](https://github.com/KoRrNiK/RtCW-Patch_145a) | [1.45a](https://github.com/KoRrNiK/RtCW-Patch_145a/releases/tag/1.45a)
+<br>
 
-</details>
+> On the Internet, people call me **KoRrNiK**.
+I'm a software/web developer from Poland who's __19 years__ old and has been coding for over __5 years__.
+I like opensource programs very much and I like learning about new technologies.
 
+<br>
 
+<sub> 🕯 ***(I spent too much of my time writing plugins for Counter Strike 1.6)*** 🕯 </sub>
+
+#### 📫 Contact and Socials 🔎
+<a href="https://discord.com/users/292279578389643264" target="_blank"><img alt="discord" align="center" src="https://img.shields.io/badge/-Discord-0D1117?style=flat-square&logo=discord&logoColor=white"></a>
+<a href="https://twitter.com/KoRrNiK1" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Twitter-0D1117?style=flat-square&logo=twitter&logoColor=white"></a>
+<a href="https://steamcommunity.com/id/korrnik" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Steam-0D1117?style=flat-square&logo=steam&logoColor=white"></a>
+<a href="https://www.twitch.tv/korrnik_" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Twitch-0D1117?style=flat-square&logo=twitch&logoColor=white"></a>
+<a href="https://www.youtube.com/channel/UC_4mFRor64UwzhH5bRQYVmQ" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Youtube-0D1117?style=flat-square&logo=youtube&logoColor=white"></a>
