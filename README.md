@@ -15,7 +15,7 @@
 
 > On the Internet, people call me **KoRrNiK**.
 I'm a software/web developer from Poland who's __19 years__ old and has been coding for over __5 years__.
-I like opensource programs very much and I like learning about new technologies.
+I like opensource programs very much and I like learning about new technologies 👀
 
 <br>
 
