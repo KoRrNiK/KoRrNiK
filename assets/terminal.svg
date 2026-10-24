@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="376" viewBox="0 0 900 376" role="img" aria-label="korrnik, developer from Poland. I like building things, mostly around games and the web. Programming fundamentals still matter. AI won't replace everything, but it's a tool worth using, no reason to stay behind. The internet has the rest, if you know where to look. fundamentals + ai + internet = anything.">
+  <defs>
+    <clipPath id="card"><rect width="900" height="376" rx="16"/></clipPath>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="50"/></filter>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
+      <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#00c647"/>
+      <stop offset="1" stop-color="#b42fc4" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="450 0;-450 0;450 0" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="any" gradientUnits="userSpaceOnUse" x1="280" y1="0" x2="390" y2="0">
+      <stop offset="0" stop-color="#56d364"/>
+      <stop offset="1" stop-color="#d670e0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    text { font: 15px ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; fill: #c9d1d9; }
+    .title { font-size: 13px; fill: #6e7681; }
+    .p { fill: #c25bd4; }
+    .c { fill: #e6edf3; }
+    .o { fill: #8b949e; }
+    .g { fill: #56d364; }
+    .v { fill: #d670e0; }
+    .cur { fill: #3fb950; }
+    .b1 { animation: d1 14s ease-in-out infinite alternate; }
+    .b2 { animation: d2 17s ease-in-out infinite alternate; }
+    /* lines appear at their delay, covers slide off char by char to "type" commands */
+    .s { animation: show 0s both; }
+    .cur.h { animation: hide 0s both; }
+    .blink { animation: blink 1s step-end infinite; }
+    @keyframes d1 { to { transform: translate(-90px, 50px); } }
+    @keyframes d2 { to { transform: translate(-70px, -60px); } }
+    @keyframes show { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes hide { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes t1 { to { transform: translateX(54px); } }
+    @keyframes t2 { to { transform: translateX(117px); } }
+    @keyframes t3 { to { transform: translateX(162px); } }
+    @keyframes t4 { to { transform: translateX(99px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .cv { display: none; } }
+  </style>
+
+  <g clip-path="url(#card)">
+    <rect width="900" height="376" fill="#0d1117"/>
+    <!-- glow stays on the right so the solid typing covers on the left never show -->
+    <g filter="url(#blur)" opacity=".3">
+      <circle class="b1" cx="830" cy="110" r="90" fill="#1a7f37"/>
+      <circle class="b2" cx="760" cy="340" r="100" fill="#800080"/>
+    </g>
+    <rect width="900" height="36" fill="#161b22"/>
+    <rect y="36" width="900" height="1" fill="#30363d"/>
+    <rect y="374" width="900" height="2" fill="url(#line)"/>
+  </g>
+  <rect x=".5" y=".5" width="899" height="375" rx="15.5" fill="none" stroke="#30363d"/>
+  <circle cx="22" cy="18" r="5.5" fill="#30363d"/>
+  <circle cx="40" cy="18" r="5.5" fill="#30363d"/>
+  <circle cx="58" cy="18" r="5.5" fill="#30363d"/>
+  <text class="title" x="450" y="23" text-anchor="middle">korrnik@poland: ~</text>
+
+  <g class="s" style="animation-delay:.3s">
+    <text class="p" x="28" y="72">$</text>
+    <text class="c" x="46" y="72" textLength="54" lengthAdjust="spacing">whoami</text>
+    <g class="cv" style="animation:t1 .54s steps(6) .6s both">
+      <rect class="cur h" x="46" y="59" width="9" height="18" style="animation-delay:1.4s"/>
+      <rect x="55" y="57" width="64" height="22" fill="#0d1117"/>
+    </g>
+  </g>
+  <text class="s" x="28" y="100" style="animation-delay:1.4s"><tspan class="g">korrnik</tspan><tspan class="o">, developer from poland</tspan></text>
+
+  <g class="s" style="animation-delay:1.8s">
+    <text class="p" x="28" y="128">$</text>
+    <text class="c" x="46" y="128" textLength="117" lengthAdjust="spacing">cat about.txt</text>
+    <g class="cv" style="animation:t2 1.17s steps(13) 2.1s both">
+      <rect class="cur h" x="46" y="115" width="9" height="18" style="animation-delay:3.5s"/>
+      <rect x="55" y="113" width="127" height="22" fill="#0d1117"/>
+    </g>
+  </g>
+  <text class="s o" x="28" y="156" style="animation-delay:3.5s">i like building things, mostly around games and the web.</text>
+
+  <g class="s" style="animation-delay:3.9s">
+    <text class="p" x="28" y="184">$</text>
+    <text class="c" x="46" y="184" textLength="162" lengthAdjust="spacing">cat how-i-work.txt</text>
+    <g class="cv" style="animation:t3 1.62s steps(18) 4.2s both">
+      <rect class="cur h" x="46" y="171" width="9" height="18" style="animation-delay:6.1s"/>
+      <rect x="55" y="169" width="172" height="22" fill="#0d1117"/>
+    </g>
+  </g>
+  <text class="s o" x="28" y="212" style="animation-delay:6.1s">programming <tspan class="g">fundamentals</tspan> still matter. <tspan class="v">ai</tspan> won't replace everything,</text>
+  <text class="s o" x="28" y="240" style="animation-delay:6.3s">but it's a tool worth using. no reason to stay behind.</text>
+  <text class="s o" x="28" y="268" style="animation-delay:6.5s">the <tspan class="c">internet</tspan> has the rest, if you know where to look.</text>
+
+  <g class="s" style="animation-delay:6.9s">
+    <text class="p" x="28" y="296">$</text>
+    <text class="c" x="46" y="296" textLength="99" lengthAdjust="spacing">echo $STACK</text>
+    <g class="cv" style="animation:t4 .99s steps(11) 7.2s both">
+      <rect class="cur h" x="46" y="283" width="9" height="18" style="animation-delay:8.4s"/>
+      <rect x="55" y="281" width="109" height="22" fill="#0d1117"/>
+    </g>
+  </g>
+  <text class="s" x="28" y="324" style="animation-delay:8.4s"><tspan class="g">fundamentals</tspan><tspan class="o"> + </tspan><tspan class="v">ai</tspan><tspan class="o"> + </tspan><tspan class="c">internet</tspan><tspan class="o"> = </tspan><tspan fill="url(#any)" font-weight="700">anything</tspan></text>
+
+  <g class="s" style="animation-delay:8.8s">
+    <text class="p" x="28" y="352">$</text>
+    <rect class="cur blink" x="46" y="339" width="9" height="18"/>
+  </g>
+</svg>
