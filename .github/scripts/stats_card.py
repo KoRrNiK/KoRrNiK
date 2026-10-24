@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from string import Template
 
-from common import HEX, LIGHT, esc, fetch, recolor
+from common import HEX, LIGHT, esc, fetch, glow, recolor
 
 USER = "KoRrNiK"
 TOP = 5
@@ -47,17 +47,16 @@ CARD = Template("""\
     .other { fill: #6e7681; }
     .in { animation: rise .6s ease-out both; }
     .seg { transform-box: fill-box; transform-origin: left; animation: grow .7s ease-out both; }
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
     @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
     @keyframes grow { from { transform: scaleX(0); } }
+    @keyframes breathe { to { opacity: .3; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 
   <g clip-path="url(#card)">
     <rect width="900" height="196" fill="#0d1117"/>
-    <g filter="url(#blur)" opacity=".4">
-      <circle cx="120" cy="196" r="90" fill="#1a7f37"/>
-      <circle cx="820" cy="0" r="90" fill="#800080"/>
-    </g>
+    $glow
     <rect width="900" height="196" fill="url(#cells)" fill-opacity=".5"/>
     <rect y="194" width="900" height="2" fill="url(#line)"/>
   </g>
@@ -74,7 +73,7 @@ CARD = Template("""\
   <g clip-path="url(#bar)">$bar</g>
   $legend
 </svg>
-""")
+""".replace("$glow", glow("stats")))
 
 # light is derived from dark; language colors are inserted after recoloring, so they stay linguist colors
 THEMES = {"stats.svg": CARD, "stats-light.svg": Template(recolor(CARD.template, LIGHT))}

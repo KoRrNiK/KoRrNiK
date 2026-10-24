@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="72" height="112" viewBox="0 0 72 112" role="img" aria-label="X">
   <defs>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
     <clipPath id="card"><rect x="-40" width="152" height="112" rx="16"/></clipPath>
     <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(-612 0)"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
     <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="-612" y1="0" x2="288" y2="0">
@@ -9,8 +10,14 @@
     </linearGradient>
     <radialGradient id="glow"><stop offset="0" stop-color="#c9d1d9" stop-opacity=".12"/><stop offset="1" stop-color="#c9d1d9" stop-opacity="0"/></radialGradient>
   </defs>
+  <style>
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
+    @keyframes breathe { to { opacity: .3; } }
+    @media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
+  </style>
   <g clip-path="url(#card)">
     <rect width="72" height="112" fill="#0d1117"/>
+    <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="-462" cy="0" r="110" fill="#800080"/><circle cx="138" cy="112" r="110" fill="#1a7f37"/></g>
     <rect width="72" height="112" fill="url(#cells)" fill-opacity=".5"/>
     <rect y="110" width="72" height="2" fill="url(#line)"/>
   </g>

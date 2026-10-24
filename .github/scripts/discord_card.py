@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from string import Template
 
-from common import LIGHT, esc, fetch, recolor
+from common import LIGHT, esc, fetch, glow, recolor
 
 USER_ID = "292279578389643264"
 IDLE_TEXT = "probably doing something else..."
@@ -21,13 +21,14 @@ STATUS = {
 VERBS = {0: "playing", 1: "streaming", 2: "listening to", 3: "watching", 5: "competing in"}
 
 # left 540px of a 900px box; the social buttons (assets/<name>.svg) fill the remaining 5 x 72px,
-# so the pattern and the bottom line use box-wide coordinates to stay seamless across the images
+# so the pattern, the glow and the bottom line use box-wide coordinates to stay seamless across the images
 CARD = Template("""\
 <svg xmlns="http://www.w3.org/2000/svg" width="540" height="112" viewBox="0 0 540 112" role="img" aria-label="$aria">
   <defs>
     <clipPath id="card"><rect width="572" height="112" rx="16"/></clipPath>
     <clipPath id="avatar"><circle cx="64" cy="56" r="32"/></clipPath>
-    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="35"/></filter>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
+    <filter id="halo" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="16"/></filter>
     <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
     <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
       <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
@@ -39,13 +40,16 @@ CARD = Template("""\
     .name { font: 800 22px "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #e6edf3; }
     .mono { font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; }
     .pulse { transform-origin: 88px 80px; animation: pulse 2s ease-out infinite; }
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
     @keyframes pulse { from { opacity: .6; transform: scale(1); } to { opacity: 0; transform: scale(2.2); } }
+    @keyframes breathe { to { opacity: .3; } }
     @media (prefers-reduced-motion: reduce) { .pulse { display: none; } * { animation: none !important; } }
   </style>
 
   <g clip-path="url(#card)">
     <rect width="540" height="112" fill="#0d1117"/>
-    <g filter="url(#blur)" opacity=".45"><circle cx="64" cy="56" r="50" fill="$color"/></g>
+    $glow
+    <g filter="url(#halo)" opacity=".5"><circle cx="64" cy="56" r="34" fill="$color"/></g>
     <rect width="540" height="112" fill="url(#cells)" fill-opacity=".5"/>
     <rect y="110" width="540" height="2" fill="url(#line)"/>
   </g>
@@ -61,7 +65,7 @@ CARD = Template("""\
   <text class="mono" x="116" y="66" font-size="13"><tspan fill="$color">$label</tspan><tspan fill="#6e7681"> · @$username</tspan></text>
   <text class="mono" x="116" y="90" font-size="13"><tspan fill="#6e7681" font-size="11" letter-spacing="1.5">$verb</tspan><tspan fill="#e6edf3"> $activity</tspan></text>
 </svg>
-""")
+""".replace("$glow", glow("social")))
 
 
 # output file -> (template, status palette); light is derived from dark so both stay in sync,

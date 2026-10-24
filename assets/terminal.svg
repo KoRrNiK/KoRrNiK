@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="376" viewBox="0 0 900 376" role="img" aria-label="korrnik, developer from Poland. I like building things, mostly around games and the web. Programming fundamentals still matter. AI won't replace everything, but it's a tool worth using, no reason to stay behind. The internet has the rest, if you know where to look. fundamentals + ai + internet = anything.">
   <defs>
     <clipPath id="card"><rect width="900" height="376" rx="16"/></clipPath>
-    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="50"/></filter>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
     <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
       <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
       <stop offset=".5" stop-color="#00c647"/>
@@ -14,6 +14,7 @@
     </linearGradient>
   </defs>
   <style>
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
     text { font: 15px ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; fill: #c9d1d9; }
     .title { font-size: 13px; fill: #6e7681; }
     .p { fill: #c25bd4; }
@@ -22,14 +23,10 @@
     .g { fill: #56d364; }
     .v { fill: #d670e0; }
     .cur { fill: #3fb950; }
-    .b1 { animation: d1 14s ease-in-out infinite alternate; }
-    .b2 { animation: d2 17s ease-in-out infinite alternate; }
     /* lines appear at their delay, covers slide off char by char to "type" commands */
     .s { animation: show 0s both; }
     .cur.h { animation: hide 0s both; }
     .blink { animation: blink 1s step-end infinite; }
-    @keyframes d1 { to { transform: translate(-90px, 50px); } }
-    @keyframes d2 { to { transform: translate(-70px, -60px); } }
     @keyframes show { from { opacity: 0; } to { opacity: 1; } }
     @keyframes hide { from { opacity: 1; } to { opacity: 0; } }
     @keyframes blink { 50% { opacity: 0; } }
@@ -37,16 +34,14 @@
     @keyframes t2 { to { transform: translateX(117px); } }
     @keyframes t3 { to { transform: translateX(162px); } }
     @keyframes t4 { to { transform: translateX(99px); } }
+    @keyframes breathe { to { opacity: .3; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .cv { display: none; } }
   </style>
 
   <g clip-path="url(#card)">
     <rect width="900" height="376" fill="#0d1117"/>
     <!-- glow stays on the right so the solid typing covers on the left never show -->
-    <g filter="url(#blur)" opacity=".3">
-      <circle class="b1" cx="830" cy="110" r="90" fill="#1a7f37"/>
-      <circle class="b2" cx="760" cy="340" r="100" fill="#800080"/>
-    </g>
+    <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="750" cy="0" r="110" fill="#1a7f37"/><circle cx="750" cy="376" r="110" fill="#800080"/></g>
     <rect width="900" height="36" fill="#161b22"/>
     <rect y="36" width="900" height="1" fill="#30363d"/>
     <rect y="374" width="900" height="2" fill="url(#line)"/>

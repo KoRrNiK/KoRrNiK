@@ -20,27 +20,22 @@
     </linearGradient>
   </defs>
   <style>
-    .b1 { animation: d1 14s ease-in-out infinite alternate; }
-    .b2 { animation: d2 17s ease-in-out infinite alternate; }
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
     .lit { animation: pulse 3s ease-in-out infinite alternate; }
     .name { font: 800 76px "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; letter-spacing: 3px; animation: rise 1s ease-out both; }
     .sub { font: 16px ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; fill: #8b949e; animation: fade 1s .7s both; }
     .caret { fill: #3fb950; animation: fade 1s .7s both, blink 1s step-end 1.7s infinite; }
-    @keyframes d1 { to { transform: translate(170px, 40px); } }
-    @keyframes d2 { to { transform: translate(-190px, -50px); } }
     @keyframes pulse { from { opacity: .25; } }
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
     @keyframes fade { from { opacity: 0; } }
     @keyframes blink { 50% { opacity: 0; } }
+    @keyframes breathe { to { opacity: .3; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
 
   <g clip-path="url(#card)">
     <rect width="900" height="220" fill="#0d1117"/>
-    <g filter="url(#blur)" opacity=".55">
-      <circle class="b1" cx="190" cy="60" r="110" fill="#1a7f37"/>
-      <circle class="b2" cx="720" cy="170" r="120" fill="#800080"/>
-    </g>
+    <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="750" cy="0" r="110" fill="#1a7f37"/><circle cx="150" cy="220" r="110" fill="#800080"/></g>
     <rect width="900" height="220" fill="url(#cells)" fill-opacity=".7"/>
     <g>
       <rect class="lit" x="18.5" y="18.5" width="11" height="11" rx="2" fill="#0f6d31" style="animation-delay:-.4s"/>

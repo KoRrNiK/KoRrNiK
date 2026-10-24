@@ -29,6 +29,25 @@ LIGHT = {
 }
 HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
 
+# Soft light spots on the box edges. A box's bottom spot matches the next box's top spot (same side, same color),
+# so the light seems to continue across the gap. The terminal keeps both on the right, where no typing covers are.
+# The static assets (header, terminal, social buttons) carry copies of their spots.
+GREEN, PURPLE = "#1a7f37", "#800080"
+GLOWS = {
+    "header": ((750, 0, GREEN), (150, 220, PURPLE)),
+    "social": ((150, 0, PURPLE), (750, 112, GREEN)),
+    "terminal": ((750, 0, GREEN), (750, 376, PURPLE)),
+    "stats": ((750, 0, PURPLE), (150, 196, GREEN)),
+    "snake": ((150, 0, GREEN), (750, 196, PURPLE)),
+}
+
+
+def glow(box: str, shift: int = 0) -> str:
+    """Spots of one box; `shift` is the image's x offset inside a box made of several images.
+    Needs a #blur filter (stdDeviation 45) and the .glow breathing animation in the same SVG."""
+    spots = "".join(f'<circle cx="{x - shift}" cy="{y}" r="110" fill="{color}"/>' for x, y, color in GLOWS[box])
+    return f'<g class="glow" filter="url(#blur)" opacity=".45">{spots}</g>'
+
 
 def recolor(text: str, table: dict[str, str]) -> str:
     # one pass, so a color that is both a key and a value is never remapped twice
