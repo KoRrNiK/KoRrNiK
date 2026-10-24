@@ -1,32 +1,23 @@
+<!-- every image has a dark and a light version; dark sources use absolute raw URLs because GitHub does not document relative srcset -->
+<p><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/header.svg">
+  <img width="100%" alt="KoRrNiK" src="assets/header-light.svg">
+</picture></p>
 
+<!-- one box: Discord status (60%) + five buttons (8% each); keep the six links on one line, any whitespace between them breaks the box apart -->
+<p><a href="https://discord.com/users/292279578389643264"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/discord/discord.svg"><img width="60%" alt="Discord status" src="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/discord/discord-light.svg"></picture></a><a href="https://discord.com/users/292279578389643264"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/discord.svg"><img width="8%" alt="Discord" src="assets/discord-light.svg"></picture></a><a href="https://twitter.com/KoRrNiK1"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/x.svg"><img width="8%" alt="X" src="assets/x-light.svg"></picture></a><a href="https://steamcommunity.com/id/korrnik"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/steam.svg"><img width="8%" alt="Steam" src="assets/steam-light.svg"></picture></a><a href="https://www.twitch.tv/korrnik_"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/twitch.svg"><img width="8%" alt="Twitch" src="assets/twitch-light.svg"></picture></a><a href="https://www.youtube.com/channel/UC_4mFRor64UwzhH5bRQYVmQ"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/youtube.svg"><img width="8%" alt="YouTube" src="assets/youtube-light.svg"></picture></a></p>
 
-<a href="https://discord.com/users/292279578389643264" target="_blank">
-    <img width="50%" align="right" alt="Discord Status" src="https://lanyard-profile-readme.vercel.app/api/292279578389643264?bg=161B22&borderRadius=5px%205px%200%200&animated=true&hideDiscrim=true&idleMessage=Probably%20doing%20something%20else...">
-<!---</a>
-<a href="https://wakatime.com/@KoRrNiK" target="_blank">
-    <img width="50%" align="right" alt="Weekly Stats" src="https://github-readme-stats.vercel.app/api/wakatime?username=korrnik&border_radius=0%200%205px%205px&theme=dark&bg_color=161B22&border_color=161B22&icon_color=58a6ff&show_icons=true&disable_animations=true">
-</a>--->
+<p><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/main/assets/terminal.svg">
+  <img width="100%" alt="korrnik, developer from Poland. I like building things, mostly around games and the web. Programming fundamentals still matter. AI won't replace everything, but it's a tool worth using. The internet has the rest, if you know where to look." src="assets/terminal-light.svg">
+</picture></p>
 
-<br><br>
+<p><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/stats/stats.svg">
+  <img width="100%" alt="GitHub stats" src="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/stats/stats-light.svg">
+</picture></p>
 
-# Hello 👋
-
-<br>
-
-> On the Internet, people call me **KoRrNiK**.
-I'm a software/web developer from Poland who's __19 years__ old and has been coding for over __5 years__.
-I like opensource programs very much and I like learning about new technologies 👀
-
-<br>
-
-<sub> 🕯 ***(I spent too much of my time writing plugins for Counter Strike 1.6)*** 🕯 </sub>
-
-#### 📫 Contact and Socials 🔎
-<a href="https://discord.com/users/292279578389643264" target="_blank"><img alt="discord" align="center" src="https://img.shields.io/badge/-Discord-0D1117?style=flat-square&logo=discord&logoColor=white"></a>
-<a href="https://twitter.com/KoRrNiK1" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Twitter-0D1117?style=flat-square&logo=twitter&logoColor=white"></a>
-<a href="https://steamcommunity.com/id/korrnik" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Steam-0D1117?style=flat-square&logo=steam&logoColor=white"></a>
-<a href="https://www.twitch.tv/korrnik_" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Twitch-0D1117?style=flat-square&logo=twitch&logoColor=white"></a>
-<a href="https://www.youtube.com/channel/UC_4mFRor64UwzhH5bRQYVmQ" target="_blank"><img alt="twitter" align="center" src="https://img.shields.io/badge/-Youtube-0D1117?style=flat-square&logo=youtube&logoColor=white"></a>
-
-<img width="100%" align="right" alt="Snake" src="https://github.com/KoRrNiK/KoRrNiK/blob/output/github-contribution-grid-snake.svg">
-
+<p><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/output/github-contribution-grid-snake-dark.svg">
+  <img alt="Contribution snake" width="100%" src="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/output/github-contribution-grid-snake.svg">
+</picture></p>
