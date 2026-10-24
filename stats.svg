@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="196" viewBox="0 0 900 196" role="img" aria-label="GitHub: 13 repos, 26 stars, 702 contributions, 44 followers, 2019 since. Top languages: C# 30%, Pawn 13%, SCSS 12%, ASL 10%, C 9%, other 26%">
+  <defs>
+    <clipPath id="card"><rect width="900" height="196" rx="16"/></clipPath>
+    <clipPath id="bar"><rect x="160" y="132" width="708" height="10" rx="5"/></clipPath>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
+      <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#00c647"/>
+      <stop offset="1" stop-color="#b42fc4" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="450 0;-450 0;450 0" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; }
+    .head { font-size: 12px; letter-spacing: 2px; fill: #6e7681; }
+    .num { font: 800 32px "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #e6edf3; }
+    .lbl { font-size: 11px; letter-spacing: 1.5px; fill: #8b949e; }
+    .lang { font-size: 12px; fill: #e6edf3; }
+    .pct { fill: #8b949e; }
+    .other { fill: #6e7681; }
+    .in { animation: rise .6s ease-out both; }
+    .seg { transform-box: fill-box; transform-origin: left; animation: grow .7s ease-out both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+    @keyframes grow { from { transform: scaleX(0); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#card)">
+    <rect width="900" height="196" fill="#0d1117"/>
+    <g filter="url(#blur)" opacity=".4">
+      <circle cx="120" cy="196" r="90" fill="#1a7f37"/>
+      <circle cx="820" cy="0" r="90" fill="#800080"/>
+    </g>
+    <rect width="900" height="196" fill="url(#cells)" fill-opacity=".5"/>
+    <rect y="194" width="900" height="2" fill="url(#line)"/>
+  </g>
+  <rect x=".5" y=".5" width="899" height="195" rx="15.5" fill="none" stroke="#30363d"/>
+  <g fill="#30363d">
+    <rect x="180" y="30" width="1" height="64"/><rect x="360" y="30" width="1" height="64"/>
+    <rect x="540" y="30" width="1" height="64"/><rect x="720" y="30" width="1" height="64"/>
+    <rect x="24" y="110" width="852" height="1"/>
+  </g>
+
+  <g class="in" style="animation-delay:0.00s"><text class="num" x="90" y="66" text-anchor="middle">13</text><text class="mono lbl" x="90" y="90" text-anchor="middle">REPOS</text></g>
+  <g class="in" style="animation-delay:0.08s"><text class="num" x="270" y="66" text-anchor="middle">26</text><text class="mono lbl" x="270" y="90" text-anchor="middle">STARS</text></g>
+  <g class="in" style="animation-delay:0.16s"><text class="num" x="450" y="66" text-anchor="middle">702</text><text class="mono lbl" x="450" y="90" text-anchor="middle">CONTRIBUTIONS</text></g>
+  <g class="in" style="animation-delay:0.24s"><text class="num" x="630" y="66" text-anchor="middle">44</text><text class="mono lbl" x="630" y="90" text-anchor="middle">FOLLOWERS</text></g>
+  <g class="in" style="animation-delay:0.32s"><text class="num" x="810" y="66" text-anchor="middle">2019</text><text class="mono lbl" x="810" y="90" text-anchor="middle">SINCE</text></g>
+  <text class="mono head" x="32" y="141">LANGUAGES</text>
+  <rect x="160" y="132" width="708" height="10" rx="5" fill="#161b22"/>
+  <g clip-path="url(#bar)"><rect class="seg" fill="#7355dd" x="160.0" y="132" width="212.4" height="10" style="animation-delay:0.30s"/><rect class="seg" fill="#dbb284" x="372.4" y="132" width="91.7" height="10" style="animation-delay:0.38s"/><rect class="seg" fill="#c6538c" x="464.1" y="132" width="83.7" height="10" style="animation-delay:0.46s"/><rect class="seg" fill="#8b949e" x="547.8" y="132" width="70.8" height="10" style="animation-delay:0.54s"/><rect class="seg" fill="#555555" x="618.6" y="132" width="65.9" height="10" style="animation-delay:0.62s"/><rect class="seg other" x="684.5" y="132" width="183.5" height="10" style="animation-delay:0.70s"/></g>
+  <g class="in" style="animation-delay:0.50s"><circle fill="#7355dd" cx="37" cy="170" r="5"/><text class="mono lang" x="48" y="174">C#<tspan class="pct"> 30%</tspan></text></g>
+  <g class="in" style="animation-delay:0.56s"><circle fill="#dbb284" cx="177" cy="170" r="5"/><text class="mono lang" x="188" y="174">Pawn<tspan class="pct"> 13%</tspan></text></g>
+  <g class="in" style="animation-delay:0.62s"><circle fill="#c6538c" cx="317" cy="170" r="5"/><text class="mono lang" x="328" y="174">SCSS<tspan class="pct"> 12%</tspan></text></g>
+  <g class="in" style="animation-delay:0.68s"><circle fill="#8b949e" cx="457" cy="170" r="5"/><text class="mono lang" x="468" y="174">ASL<tspan class="pct"> 10%</tspan></text></g>
+  <g class="in" style="animation-delay:0.74s"><circle fill="#555555" cx="597" cy="170" r="5"/><text class="mono lang" x="608" y="174">C<tspan class="pct"> 9%</tspan></text></g>
+  <g class="in" style="animation-delay:0.80s"><circle class="other" cx="737" cy="170" r="5"/><text class="mono lang" x="748" y="174">other<tspan class="pct"> 26%</tspan></text></g>
+</svg>
