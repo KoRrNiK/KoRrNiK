@@ -55,8 +55,9 @@ CARD = Template("""\
     .head { font-size: 12px; letter-spacing: 2px; fill: #6e7681; }
     .num { font-size: 13px; font-weight: 700; letter-spacing: 0; fill: #e6edf3; }
     .month { font-size: 10px; fill: #6e7681; }
-    /* every cell and every bar segment gets its own keyframes, timed to the reset and to the snake's bites */
-    .eat, .fill { animation-duration: ${loop}s; animation-iteration-count: infinite; }
+    /* the snake, every cell and every bar segment get their own keyframes on one shared loop */
+    .move, .eat, .fill { animation-duration: ${loop}s; animation-iteration-count: infinite; }
+    .move { animation-timing-function: linear; }
     .eat { transform-box: fill-box; transform-origin: center; animation-timing-function: linear; }
     .fill { transform-box: fill-box; transform-origin: left; transform: scaleX(0); animation-timing-function: step-end; }
     $keyframes
@@ -204,7 +205,7 @@ def render(weeks: list[list[dict]]) -> str:
     def at(seconds: float) -> str:
         return f"{seconds / loop * 100:.3f}%"
 
-    def bite(move: int) -> float:
+    def when(move: int) -> float:
         return RESET + move * STEP
 
     def center(cell: Cell) -> tuple[int, int]:
@@ -217,7 +218,7 @@ def render(weeks: list[list[dict]]) -> str:
         x, y = center(cell)
         grow = ""
         if cell in eaten:
-            pop, eat, full = 0.3 + cell[0] / width * WAVE, bite(eaten[cell]), COLORS[level]
+            pop, eat, full = 0.3 + cell[0] / width * WAVE, when(eaten[cell]), COLORS[level]
             grow = f' class="eat" style="animation-name:e{n}"'
             keyframes.append(
                 f"@keyframes e{n} {{ 0%, {at(pop - 0.01)} {{ fill: {empty}; transform: scale(1); }} "
@@ -236,29 +237,34 @@ def render(weeks: list[list[dict]]) -> str:
             continue
         share = width * PITCH * len(bites) / len(eaten)
         bar.append(f'<rect class="fill" x="{x:.1f}" y="{BAR_Y}" width="{share + 0.5:.1f}" height="8" fill="{COLORS[level]}" style="animation-name:f{level}"/>')
-        growth = " ".join(f"{at(bite(move))} {{ transform: scaleX({k / len(bites):.4f}); }}" for k, move in enumerate(bites, 1))
+        growth = " ".join(f"{at(when(move))} {{ transform: scaleX({k / len(bites):.4f}); }}" for k, move in enumerate(bites, 1))
         keyframes.append(
             f"@keyframes f{level} {{ 0% {{ transform: scaleX(1); animation-timing-function: ease-in; }} "
             f"{at(DRAIN)} {{ transform: scaleX(0); animation-timing-function: step-end; }} {growth} }}"
         )
         x += share
 
-    # every segment gets the loop rotated to start where it lies at home, so all of them wait out the reset
-    # in place and then move off together at the same constant speed
+    # The snake moves on the same CSS clock as the cells, so a cell disappears exactly when the head is on it
+    # (SMIL motion runs on its own clock, which can start a few hundred ms apart). Every segment gets the loop
+    # rotated to start where it lies at home, waits out the reset in place, then follows its cells at STEP per
+    # move; keyframes are only needed where it turns.
     segments = []
     for k in reversed(range(LENGTH)):  # tail first, so the head is drawn on top
         cells_k = path[moves - k:] + path[1 : moves - k + 1]
+        steps = [(b[0] - a[0], b[1] - a[1]) for a, b in zip(cells_k, cells_k[1:])]
+        turns = [j for j in range(1, len(steps)) if steps[j] != steps[j - 1]] + [len(steps)]
         x, y = center(cells_k[0])
-        d = f"M{x} {y}" + "".join(
-            f"h{(bx - ax) * PITCH}" if ay == by else f"v{(by - ay) * PITCH}" for (ax, ay), (bx, by) in zip(cells_k, cells_k[1:])
-        )
+        frames = [f"0%, {at(RESET)} {{ transform: translate({x}px, {y}px); }}"]
+        for j in turns:
+            x, y = center(cells_k[j])
+            frames.append(f"{at(when(j))} {{ transform: translate({x}px, {y}px); }}")
+        keyframes.append(f"@keyframes m{k} {{ {' '.join(frames)} }}")
         size = 12 - k
         fill = "#d670e0" if k == 0 else "#b42fc4"
         halo = '<circle r="14" fill="url(#halo)"/>' if k == 0 else ""
         segments.append(
-            f'<g opacity="{1 - k * 0.18:.2f}">{halo}'
-            f'<rect x="{-size / 2}" y="{-size / 2}" width="{size}" height="{size}" rx="3" fill="{fill}"/>'
-            f'<animateMotion dur="{loop}s" repeatCount="indefinite" calcMode="linear" keyTimes="0;{RESET / loop:.4f};1" keyPoints="0;0;1" path="{d}"/></g>'
+            f'<g class="move" style="animation-name:m{k}" opacity="{1 - k * 0.18:.2f}">{halo}'
+            f'<rect x="{-size / 2}" y="{-size / 2}" width="{size}" height="{size}" rx="3" fill="{fill}"/></g>'
         )
 
     labels, last = [], -3
