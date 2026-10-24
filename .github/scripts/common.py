@@ -45,7 +45,7 @@ GLOWS = {
     "social": ((150, 0, PURPLE), (750, 112, GREEN)),
     "terminal": ((750, 0, GREEN), (750, 376, PURPLE)),
     "stats": ((750, 0, PURPLE), (150, 196, GREEN)),
-    "snake": ((150, 0, GREEN), (750, 196, PURPLE)),
+    "snake": ((150, 0, GREEN), (750, 232, PURPLE)),
 }
 
 
