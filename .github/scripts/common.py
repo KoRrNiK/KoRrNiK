@@ -35,8 +35,9 @@ def recolor(text: str, table: dict[str, str]) -> str:
     return HEX.sub(lambda m: table.get(m.group(0).lower(), m.group(0)), text)
 
 
-def fetch(url: str, headers: dict[str, str] | None = None) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "korrnik-profile-readme", **(headers or {})})
+def fetch(url: str, headers: dict[str, str] | None = None, body: bytes | None = None) -> bytes:
+    # a body turns the request into a POST
+    req = urllib.request.Request(url, data=body, headers={"User-Agent": "korrnik-profile-readme", **(headers or {})})
     with urllib.request.urlopen(req, timeout=20) as res:
         return res.read()
 

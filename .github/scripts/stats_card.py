@@ -1,4 +1,4 @@
-"""Render the GitHub stats card for the profile README from the GitHub REST API."""
+"""Render the GitHub stats card for the profile README from the GitHub REST and GraphQL APIs."""
 
 import json
 import os
@@ -15,6 +15,13 @@ BAR_X, BAR_Y, BAR_W = 160, 132, 708
 # the same color table GitHub uses; languages without a color there (e.g. ASL) stay gray, as on GitHub
 LINGUIST = "https://raw.githubusercontent.com/github-linguist/linguist/main/lib/linguist/languages.yml"
 FALLBACK = "#8b949e"
+CONTRIBUTIONS_QUERY = """
+query($login: String!) {
+  user(login: $login) {
+    contributionsCollection { contributionCalendar { totalContributions } restrictedContributionsCount }
+  }
+}
+"""
 
 CARD = Template("""\
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="196" viewBox="0 0 900 196" role="img" aria-label="$aria">
@@ -80,6 +87,21 @@ def api(path: str):
     return json.loads(fetch(f"https://api.github.com{path}", headers))
 
 
+def contributions() -> int:
+    # the same last-year calendar the profile shows, private contributions included when the user shares them
+    token = os.environ.get("GITHUB_TOKEN")
+    if not token:
+        sys.exit("GITHUB_TOKEN is required: the GraphQL API does not accept anonymous requests")
+    body = json.dumps({"query": CONTRIBUTIONS_QUERY, "variables": {"login": USER}}).encode()
+    reply = json.loads(fetch("https://api.github.com/graphql", {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}, body))
+    if reply.get("errors"):
+        sys.exit(f"graphql error: {reply['errors']}")
+    collection = reply["data"]["user"]["contributionsCollection"]
+    total = collection["contributionCalendar"]["totalContributions"]
+    print(f"contributions: calendar={total} restricted={collection['restrictedContributionsCount']}")
+    return total
+
+
 def linguist_colors(yaml_text: str) -> dict[str, str]:
     # languages.yml is flat enough to read without a YAML library: a top-level "Name:" line, then "  color:"
     colors: dict[str, str] = {}
@@ -117,7 +139,7 @@ def render(card: Template, stats: list[tuple[str, str]], langs: list[tuple[str, 
     stat_cols = "\n  ".join(
         f'<g class="in" style="animation-delay:{i * 0.08:.2f}s">'
         f'<text class="num" x="{COL_W // 2 + i * COL_W}" y="66" text-anchor="middle">{esc(value, 6)}</text>'
-        f'<text class="mono lbl" x="{COL_W // 2 + i * COL_W}" y="90" text-anchor="middle">{esc(label.upper(), 10)}</text></g>'
+        f'<text class="mono lbl" x="{COL_W // 2 + i * COL_W}" y="90" text-anchor="middle">{esc(label.upper(), 13)}</text></g>'
         for i, (value, label) in enumerate(stats)
     )
     bar, legend, x = [], [], float(BAR_X)
@@ -141,7 +163,7 @@ def main(out_dir: str) -> None:
     stats = [
         (compact(user["public_repos"]), "repos"),
         (compact(sum(repo["stargazers_count"] for repo in repos)), "stars"),
-        (compact(api(f"/search/commits?q=author:{USER}&per_page=1")["total_count"]), "commits"),
+        (compact(contributions()), "contributions"),
         (compact(user["followers"]), "followers"),
         (user["created_at"][:4], "since"),
     ]
