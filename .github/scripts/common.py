@@ -7,11 +7,11 @@ import re
 import sys
 import urllib.request
 
-# dark -> light colors for GitHub's light theme, shared by every card and static asset
+# Dark -> light colors for GitHub's light themes, shared by every card and static asset.
+# Card backgrounds are transparent and borders, slots and tints are see-through #8b949e, so every card takes
+# the page's own shade in any dark or light variant (default, soft dark, high contrast, colour-blind).
 LIGHT = {
-    "#0d1117": "#ffffff",  # card background
-    "#161b22": "#ebedf0",  # contribution cells
-    "#30363d": "#d0d7de",  # borders
+    "#0d1117": "#ffffff",  # ring cut around the Discord status dot
     "#e6edf3": "#1f2328",
     "#c9d1d9": "#1f2328",
     "#8b949e": "#59636e",
@@ -37,8 +37,8 @@ LIGHT = {
 HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
 
 # Soft light spots on the box edges. A box's bottom spot matches the next box's top spot (same side, same color),
-# so the light seems to continue across the gap. The terminal keeps both on the right, where no typing covers are.
-# The static assets (header, terminal, social buttons) carry copies of their spots.
+# so the light seems to continue across the gap. The static assets (header, terminal, social buttons) carry
+# copies of their spots.
 GREEN, PURPLE = "#1a7f37", "#800080"
 GLOWS = {
     "header": ((750, 0, GREEN), (150, 220, PURPLE)),

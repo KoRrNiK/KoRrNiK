@@ -29,7 +29,7 @@ CARD = Template("""\
     <clipPath id="card"><rect width="900" height="196" rx="16"/></clipPath>
     <clipPath id="bar"><rect x="160" y="132" width="708" height="10" rx="5"/></clipPath>
     <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
-    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#8b949e"/></pattern>
     <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
       <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
       <stop offset=".5" stop-color="#00c647"/>
@@ -55,13 +55,12 @@ CARD = Template("""\
   </style>
 
   <g clip-path="url(#card)">
-    <rect width="900" height="196" fill="#0d1117"/>
     $glow
-    <rect width="900" height="196" fill="url(#cells)" fill-opacity=".5"/>
+    <rect width="900" height="196" fill="url(#cells)" fill-opacity=".04"/>
     <rect y="194" width="900" height="2" fill="url(#line)"/>
   </g>
-  <rect x=".5" y=".5" width="899" height="195" rx="15.5" fill="none" stroke="#30363d"/>
-  <g fill="#30363d">
+  <rect x=".5" y=".5" width="899" height="195" rx="15.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
+  <g fill="#8b949e" fill-opacity=".3">
     <rect x="180" y="30" width="1" height="64"/><rect x="360" y="30" width="1" height="64"/>
     <rect x="540" y="30" width="1" height="64"/><rect x="720" y="30" width="1" height="64"/>
     <rect x="24" y="110" width="852" height="1"/>
@@ -69,7 +68,7 @@ CARD = Template("""\
 
   $stats
   <text class="mono head" x="32" y="141">LANGUAGES</text>
-  <rect x="160" y="132" width="708" height="10" rx="5" fill="#161b22"/>
+  <rect x="160" y="132" width="708" height="10" rx="5" fill="#8b949e" fill-opacity=".1"/>
   <g clip-path="url(#bar)">$bar</g>
   $legend
 </svg>

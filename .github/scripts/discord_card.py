@@ -29,7 +29,7 @@ CARD = Template("""\
     <clipPath id="avatar"><circle cx="64" cy="56" r="32"/></clipPath>
     <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
     <filter id="halo" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="16"/></filter>
-    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#8b949e"/></pattern>
     <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
       <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
       <stop offset=".5" stop-color="#00c647"/>
@@ -47,17 +47,16 @@ CARD = Template("""\
   </style>
 
   <g clip-path="url(#card)">
-    <rect width="540" height="112" fill="#0d1117"/>
     $glow
     <g filter="url(#halo)" opacity=".5"><circle cx="64" cy="56" r="34" fill="$color"/></g>
-    <rect width="540" height="112" fill="url(#cells)" fill-opacity=".5"/>
+    <rect width="540" height="112" fill="url(#cells)" fill-opacity=".04"/>
     <rect y="110" width="540" height="2" fill="url(#line)"/>
   </g>
-  <rect x=".5" y=".5" width="571" height="111" rx="15.5" fill="none" stroke="#30363d"/>
-  <rect x="539" y="16" width="1" height="80" fill="#30363d"/>
+  <rect x=".5" y=".5" width="571" height="111" rx="15.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
+  <rect x="539" y="16" width="1" height="80" fill="#8b949e" fill-opacity=".3"/>
 
   <image x="32" y="24" width="64" height="64" clip-path="url(#avatar)" href="data:image/png;base64,$avatar"/>
-  <circle cx="64" cy="56" r="32.5" fill="none" stroke="#30363d"/>
+  <circle cx="64" cy="56" r="32.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
   $pulse
   <circle cx="88" cy="80" r="9" fill="$color" stroke="#0d1117" stroke-width="4"/>
 

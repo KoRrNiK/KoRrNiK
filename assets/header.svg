@@ -3,7 +3,7 @@
     <clipPath id="card"><rect width="900" height="220" rx="16"/></clipPath>
     <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
     <!-- same cells as the contribution graph the snake eats -->
-    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#8b949e"/></pattern>
     <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
       <stop offset="0" stop-color="#e6edf3"/>
       <stop offset=".42" stop-color="#e6edf3"/>
@@ -34,9 +34,8 @@
   </style>
 
   <g clip-path="url(#card)">
-    <rect width="900" height="220" fill="#0d1117"/>
     <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="750" cy="0" r="110" fill="#1a7f37"/><circle cx="150" cy="220" r="110" fill="#800080"/></g>
-    <rect width="900" height="220" fill="url(#cells)" fill-opacity=".7"/>
+    <rect width="900" height="220" fill="url(#cells)" fill-opacity=".06"/>
     <g>
       <rect class="lit" x="18.5" y="18.5" width="11" height="11" rx="2" fill="#0f6d31" style="animation-delay:-.4s"/>
       <rect class="lit" x="66.5" y="34.5" width="11" height="11" rx="2" fill="#00c647" style="animation-delay:-1.9s"/>
@@ -53,7 +52,7 @@
     </g>
     <rect y="218" width="900" height="2" fill="url(#line)"/>
   </g>
-  <rect x=".5" y=".5" width="899" height="219" rx="15.5" fill="none" stroke="#30363d"/>
+  <rect x=".5" y=".5" width="899" height="219" rx="15.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
 
   <text class="name" x="450" y="122" text-anchor="middle" fill="url(#shine)">KoRrNiK</text>
   <text class="sub" x="382.8" y="162" textLength="134.4" lengthAdjust="spacing">just like that</text>

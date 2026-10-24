@@ -17,8 +17,8 @@ query($login: String!) {
 }
 """
 LEVELS = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
-# GitHub's own dark contribution colors for levels 0-4; common.LIGHT maps them to the light ones
-COLORS = ("#161b22", "#0e4429", "#006d32", "#26a641", "#39d353")
+# GitHub's own dark contribution colors for levels 1-4 (level 0 is a see-through slot); common.LIGHT maps them to the light ones
+COLORS = (None, "#0e4429", "#006d32", "#26a641", "#39d353")
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 PITCH, CELL = 16, 12  # grid pitch and drawn cell size
 TOP, BAR_Y = 74, 210  # grid top (a walkable one-cell margin runs all around the grid) and the eaten-cells bar
@@ -67,17 +67,16 @@ CARD = Template("""\
   </style>
 
   <g clip-path="url(#card)">
-    <rect width="900" height="232" fill="#0d1117"/>
     $glow
     <rect y="230" width="900" height="2" fill="url(#line)"/>
   </g>
-  <rect x=".5" y=".5" width="899" height="231" rx="15.5" fill="none" stroke="#30363d"/>
+  <rect x=".5" y=".5" width="899" height="231" rx="15.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
 
   <text class="mono head" x="$text_left" y="30">LAST 12 MONTHS</text>
   <text class="mono head" x="$text_right" y="30" text-anchor="end">LONGEST STREAK <tspan class="num">$longest</tspan><tspan dx="16">CURRENT </tspan><tspan class="num">$current</tspan></text>
   $months
   $cells
-  <rect x="$left" y="210" width="$grid_width" height="8" rx="4" fill="#161b22"/>
+  <rect x="$left" y="210" width="$grid_width" height="8" rx="4" fill="#8b949e" fill-opacity=".1"/>
   <g clip-path="url(#bar)">$bar</g>
   <g class="snake" clip-path="url(#area)">
   $segments
@@ -211,23 +210,24 @@ def render(weeks: list[list[dict]]) -> str:
     def center(cell: Cell) -> tuple[int, int]:
         return left + cell[0] * PITCH + PITCH // 2, TOP + cell[1] * PITCH + PITCH // 2
 
-    # a coloured cell sits empty during the reset until the wave reaches its week, pops back in, and empties again when eaten
+    # Every day is a see-through slot, so empty days take the page's own shade in any GitHub theme. A coloured
+    # cell lies on top of its slot: hidden during the reset until the wave reaches its week, then it pops in,
+    # and it vanishes the moment the snake's head is on it.
     cells, keyframes = [], []
-    empty = COLORS[0]
     for n, (cell, level) in enumerate(sorted(levels.items())):
         x, y = center(cell)
-        grow = ""
+        box = f'x="{x - CELL // 2}" y="{y - CELL // 2}" width="{CELL}" height="{CELL}" rx="2.5"'
+        cells.append(f'<rect {box} fill="#8b949e" fill-opacity=".1"/>')
         if cell in eaten:
-            pop, eat, full = 0.3 + cell[0] / width * WAVE, when(eaten[cell]), COLORS[level]
-            grow = f' class="eat" style="animation-name:e{n}"'
+            pop, eat = 0.3 + cell[0] / width * WAVE, when(eaten[cell])
+            cells.append(f'<rect class="eat" {box} fill="{COLORS[level]}" style="animation-name:e{n}"/>')
             keyframes.append(
-                f"@keyframes e{n} {{ 0%, {at(pop - 0.01)} {{ fill: {empty}; transform: scale(1); }} "
-                f"{at(pop)} {{ fill: {full}; transform: scale(.2); }} "
-                f"{at(pop + POP * 0.6)} {{ fill: {full}; transform: scale(1.2); }} "
-                f"{at(pop + POP)}, {at(eat - 0.01)} {{ fill: {full}; transform: scale(1); }} "
-                f"{at(eat)}, 100% {{ fill: {empty}; transform: scale(1); }} }}"
+                f"@keyframes e{n} {{ 0%, {at(pop - 0.01)} {{ opacity: 0; transform: scale(1); }} "
+                f"{at(pop)} {{ opacity: 1; transform: scale(.2); }} "
+                f"{at(pop + POP * 0.6)} {{ opacity: 1; transform: scale(1.2); }} "
+                f"{at(pop + POP)}, {at(eat - 0.01)} {{ opacity: 1; transform: scale(1); }} "
+                f"{at(eat)}, 100% {{ opacity: 0; transform: scale(1); }} }}"
             )
-        cells.append(f'<rect x="{x - CELL // 2}" y="{y - CELL // 2}" width="{CELL}" height="{CELL}" rx="2.5" fill="{COLORS[level]}"{grow}/>')
 
     # one bar segment per level, as wide as its share of the cells: drained by the reset, then growing with every bite like in snk
     bar, x = [], float(left)

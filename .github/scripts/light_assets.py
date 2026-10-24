@@ -8,8 +8,6 @@ from pathlib import Path
 from common import LIGHT, recolor
 
 ASSETS = Path(__file__).resolve().parents[2] / "assets"
-# the terminal title bar shares its dark color with the contribution cells but should stay lighter
-OVERRIDES = {"terminal.svg": {"#161b22": "#f6f8fa"}}
 
 
 def main() -> None:
@@ -17,8 +15,7 @@ def main() -> None:
         if dark.stem.endswith("-light"):
             continue
         light = dark.with_name(f"{dark.stem}-light.svg")
-        table = {**LIGHT, **OVERRIDES.get(dark.name, {})}
-        light.write_text(recolor(dark.read_text(encoding="utf-8"), table), encoding="utf-8", newline="\n")
+        light.write_text(recolor(dark.read_text(encoding="utf-8"), LIGHT), encoding="utf-8", newline="\n")
         print(f"{dark.name} -> {light.name}")
 
 
