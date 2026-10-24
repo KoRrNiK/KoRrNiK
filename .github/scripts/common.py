@@ -1,7 +1,10 @@
 """Shared helpers for the generated README cards and the light-theme assets."""
 
 import html
+import json
+import os
 import re
+import sys
 import urllib.request
 
 # dark -> light colors for GitHub's light theme, shared by every card and static asset
@@ -24,6 +27,10 @@ LIGHT = {
     "#034525": "#9be9a8",
     "#0f6d31": "#40c463",
     "#00c647": "#30a14e",
+    "#0e4429": "#9be9a8",  # GitHub's contribution levels 1-4
+    "#006d32": "#40c463",
+    "#26a641": "#30a14e",
+    "#39d353": "#216e39",
     "#1a7f37": "#6fdd8b",  # green glow
     "#800080": "#e2b6f2",  # purple glow
 }
@@ -59,6 +66,18 @@ def fetch(url: str, headers: dict[str, str] | None = None, body: bytes | None = 
     req = urllib.request.Request(url, data=body, headers={"User-Agent": "korrnik-profile-readme", **(headers or {})})
     with urllib.request.urlopen(req, timeout=20) as res:
         return res.read()
+
+
+def graphql(query: str, variables: dict) -> dict:
+    token = os.environ.get("GITHUB_TOKEN")
+    if not token:
+        sys.exit("GITHUB_TOKEN is required: the GraphQL API does not accept anonymous requests")
+    body = json.dumps({"query": query, "variables": variables}).encode()
+    reply = json.loads(fetch("https://api.github.com/graphql", {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}, body))
+    if reply.get("errors"):
+        # failing the run keeps the previously published card
+        sys.exit(f"graphql error: {reply['errors']}")
+    return reply["data"]
 
 
 def esc(text: str, limit: int) -> str:

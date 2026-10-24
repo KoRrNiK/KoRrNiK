@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from string import Template
 
-from common import HEX, LIGHT, esc, fetch, glow, recolor
+from common import HEX, LIGHT, esc, fetch, glow, graphql, recolor
 
 USER = "KoRrNiK"
 TOP = 5
@@ -88,14 +88,7 @@ def api(path: str):
 
 def contributions() -> int:
     # the same last-year calendar the profile shows, private contributions included when the user shares them
-    token = os.environ.get("GITHUB_TOKEN")
-    if not token:
-        sys.exit("GITHUB_TOKEN is required: the GraphQL API does not accept anonymous requests")
-    body = json.dumps({"query": CONTRIBUTIONS_QUERY, "variables": {"login": USER}}).encode()
-    reply = json.loads(fetch("https://api.github.com/graphql", {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}, body))
-    if reply.get("errors"):
-        sys.exit(f"graphql error: {reply['errors']}")
-    collection = reply["data"]["user"]["contributionsCollection"]
+    collection = graphql(CONTRIBUTIONS_QUERY, {"login": USER})["user"]["contributionsCollection"]
     total = collection["contributionCalendar"]["totalContributions"]
     print(f"contributions: calendar={total} restricted={collection['restrictedContributionsCount']}")
     return total

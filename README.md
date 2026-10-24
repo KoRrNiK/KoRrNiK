@@ -18,6 +18,6 @@
 </picture></p>
 
 <p><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/output/github-contribution-grid-snake-dark.svg">
-  <img alt="Contribution snake" width="100%" src="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/output/github-contribution-grid-snake.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/snake/snake.svg">
+  <img width="100%" alt="Contribution snake eating the last 12 months" src="https://raw.githubusercontent.com/KoRrNiK/KoRrNiK/snake/snake-light.svg">
 </picture></p>
