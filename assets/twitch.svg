@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="112" viewBox="0 0 72 112" role="img" aria-label="Twitch">
+  <defs>
+    <clipPath id="card"><rect x="-40" width="152" height="112" rx="16"/></clipPath>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(-756 0)"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="-756" y1="0" x2="144" y2="0">
+      <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#00c647"/>
+      <stop offset="1" stop-color="#b42fc4" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#c9d1d9" stop-opacity=".12"/><stop offset="1" stop-color="#c9d1d9" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="72" height="112" fill="#0d1117"/>
+    <rect width="72" height="112" fill="url(#cells)" fill-opacity=".5"/>
+    <rect y="110" width="72" height="2" fill="url(#line)"/>
+  </g>
+  <rect x="-40" width="152" y=".5" height="111" rx="15.5" fill="none" stroke="#30363d"/>
+  <rect x="71" y="16" width="1" height="80" fill="#30363d"/>
+  <circle cx="36" cy="44" r="26" fill="url(#glow)"/>
+  <path transform="translate(24 32)" fill="#c9d1d9" d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+  <text x="36" y="84" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Liberation Mono', Menlo, monospace" font-size="11" fill="#8b949e">twitch</text>
+</svg>

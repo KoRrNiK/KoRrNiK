@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="112" viewBox="0 0 72 112" role="img" aria-label="X">
+  <defs>
+    <clipPath id="card"><rect x="-40" width="152" height="112" rx="16"/></clipPath>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(-612 0)"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#161b22"/></pattern>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="-612" y1="0" x2="288" y2="0">
+      <stop offset="0" stop-color="#00c647" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#00c647"/>
+      <stop offset="1" stop-color="#b42fc4" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#c9d1d9" stop-opacity=".12"/><stop offset="1" stop-color="#c9d1d9" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="72" height="112" fill="#0d1117"/>
+    <rect width="72" height="112" fill="url(#cells)" fill-opacity=".5"/>
+    <rect y="110" width="72" height="2" fill="url(#line)"/>
+  </g>
+  <rect x="-40" width="152" y=".5" height="111" rx="15.5" fill="none" stroke="#30363d"/>
+  <rect x="71" y="16" width="1" height="80" fill="#30363d"/>
+  <circle cx="36" cy="44" r="26" fill="url(#glow)"/>
+  <path transform="translate(24 32)" fill="#c9d1d9" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+  <text x="36" y="84" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Liberation Mono', Menlo, monospace" font-size="11" fill="#8b949e">x</text>
+</svg>
