@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="112" viewBox="0 0 72 112" role="img" aria-label="Steam">
+  <defs>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
+    <clipPath id="card"><rect x="-40" width="152" height="112" rx="16"/></clipPath>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(-684 0)"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#8b949e"/></pattern>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="-684" y1="0" x2="216" y2="0">
+      <stop offset="0" stop-color="#f68c41" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#f68c41"/>
+      <stop offset="1" stop-color="#b42fc4" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#c9d1d9" stop-opacity=".12"/><stop offset="1" stop-color="#c9d1d9" stop-opacity="0"/></radialGradient>
+  </defs>
+  <style>
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
+    @keyframes breathe { to { opacity: .3; } }
+    @media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
+  </style>
+  <g clip-path="url(#card)">
+    <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="-534" cy="0" r="110" fill="#800080"/><circle cx="66" cy="112" r="110" fill="#c46212"/></g>
+    <rect width="72" height="112" fill="url(#cells)" fill-opacity=".04"/>
+    <rect y="110" width="72" height="2" fill="url(#line)"/>
+  </g>
+  <rect x="-40" width="152" y=".5" height="111" rx="15.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
+  <rect x="71" y="16" width="1" height="80" fill="#8b949e" fill-opacity=".3"/>
+  <circle cx="36" cy="44" r="26" fill="url(#glow)"/>
+  <path transform="translate(24 32)" fill="#c9d1d9" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/>
+  <text x="36" y="84" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Liberation Mono', Menlo, monospace" font-size="11" fill="#8b949e">steam</text>
+</svg>

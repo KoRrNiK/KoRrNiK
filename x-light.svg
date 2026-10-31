@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="112" viewBox="0 0 72 112" role="img" aria-label="X">
+  <defs>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
+    <clipPath id="card"><rect x="-40" width="152" height="112" rx="16"/></clipPath>
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(-612 0)"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#59636e"/></pattern>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="-612" y1="0" x2="288" y2="0">
+      <stop offset="0" stop-color="#f68c41" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#f68c41"/>
+      <stop offset="1" stop-color="#a02db0" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#1f2328" stop-opacity=".12"/><stop offset="1" stop-color="#1f2328" stop-opacity="0"/></radialGradient>
+  </defs>
+  <style>
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
+    @keyframes breathe { to { opacity: .3; } }
+    @media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
+  </style>
+  <g clip-path="url(#card)">
+    <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="-462" cy="0" r="110" fill="#e2b6f2"/><circle cx="138" cy="112" r="110" fill="#fdbb7d"/></g>
+    <rect width="72" height="112" fill="url(#cells)" fill-opacity=".04"/>
+    <rect y="110" width="72" height="2" fill="url(#line)"/>
+  </g>
+  <rect x="-40" width="152" y=".5" height="111" rx="15.5" fill="none" stroke="#59636e" stroke-opacity=".3"/>
+  <rect x="71" y="16" width="1" height="80" fill="#59636e" fill-opacity=".3"/>
+  <circle cx="36" cy="44" r="26" fill="url(#glow)"/>
+  <path transform="translate(24 32)" fill="#1f2328" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+  <text x="36" y="84" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Liberation Mono', Menlo, monospace" font-size="11" fill="#59636e">x</text>
+</svg>

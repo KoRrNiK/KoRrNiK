@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" role="img" aria-label="KoRrNiK">
+  <defs>
+    <clipPath id="card"><rect width="900" height="220" rx="16"/></clipPath>
+    <filter id="blur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="45"/></filter>
+    <!-- same cells as the contribution graph the snake eats -->
+    <pattern id="cells" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="#8b949e"/></pattern>
+    <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
+      <stop offset="0" stop-color="#e6edf3"/>
+      <stop offset=".42" stop-color="#e6edf3"/>
+      <stop offset=".5" stop-color="#e3d04f"/>
+      <stop offset=".58" stop-color="#e6edf3"/>
+      <stop offset="1" stop-color="#e6edf3"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-900 0;900 0" dur="5s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="0">
+      <stop offset="0" stop-color="#f68c41" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#f68c41"/>
+      <stop offset="1" stop-color="#b42fc4" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-450 0;450 0;-450 0" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .glow { animation: breathe 6s ease-in-out infinite alternate; }
+    .lit { animation: pulse 3s ease-in-out infinite alternate; }
+    .name { font: 800 76px "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; letter-spacing: 3px; animation: rise 1s ease-out both; }
+    .sub { font: 16px ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; fill: #8b949e; animation: fade 1s .7s both; }
+    .caret { fill: #f68c41; animation: fade 1s .7s both, blink 1s step-end 1.7s infinite; }
+    @keyframes pulse { from { opacity: .25; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+    @keyframes fade { from { opacity: 0; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes breathe { to { opacity: .3; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <g clip-path="url(#card)">
+    <g class="glow" filter="url(#blur)" opacity=".45"><circle cx="750" cy="0" r="110" fill="#c46212"/><circle cx="150" cy="220" r="110" fill="#800080"/></g>
+    <rect width="900" height="220" fill="url(#cells)" fill-opacity=".06"/>
+    <g>
+      <rect class="lit" x="18.5" y="18.5" width="11" height="11" rx="2" fill="#c46212" style="animation-delay:-.4s"/>
+      <rect class="lit" x="66.5" y="34.5" width="11" height="11" rx="2" fill="#f68c41" style="animation-delay:-1.9s"/>
+      <rect class="lit" x="34.5" y="146.5" width="11" height="11" rx="2" fill="#984b10" style="animation-delay:-2.6s"/>
+      <rect class="lit" x="114.5" y="178.5" width="11" height="11" rx="2" fill="#c46212" style="animation-delay:-1.2s"/>
+      <rect class="lit" x="178.5" y="18.5" width="11" height="11" rx="2" fill="#984b10" style="animation-delay:-.8s"/>
+      <rect class="lit" x="226.5" y="194.5" width="11" height="11" rx="2" fill="#f68c41" style="animation-delay:-2.2s"/>
+      <rect class="lit" x="674.5" y="18.5" width="11" height="11" rx="2" fill="#c46212" style="animation-delay:-1.5s"/>
+      <rect class="lit" x="722.5" y="194.5" width="11" height="11" rx="2" fill="#984b10" style="animation-delay:-.2s"/>
+      <rect class="lit" x="786.5" y="50.5" width="11" height="11" rx="2" fill="#f68c41" style="animation-delay:-2.8s"/>
+      <rect class="lit" x="850.5" y="130.5" width="11" height="11" rx="2" fill="#c46212" style="animation-delay:-1s"/>
+      <rect class="lit" x="866.5" y="18.5" width="11" height="11" rx="2" fill="#984b10" style="animation-delay:-2s"/>
+      <rect class="lit" x="818.5" y="178.5" width="11" height="11" rx="2" fill="#f68c41" style="animation-delay:-.6s"/>
+    </g>
+    <rect y="218" width="900" height="2" fill="url(#line)"/>
+  </g>
+  <rect x=".5" y=".5" width="899" height="219" rx="15.5" fill="none" stroke="#8b949e" stroke-opacity=".3"/>
+
+  <text class="name" x="450" y="122" text-anchor="middle" fill="url(#shine)">KoRrNiK</text>
+  <text class="sub" x="382.8" y="162" textLength="134.4" lengthAdjust="spacing">just like that</text>
+  <rect class="caret" x="521" y="149" width="9" height="17"/>
+</svg>
