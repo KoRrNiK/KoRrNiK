@@ -6,9 +6,8 @@ import sys
 from pathlib import Path
 from string import Template
 
-from common import HEX, LIGHT, esc, fetch, glow, graphql, recolor
+from common import HEX, USER, esc, fetch, glow, graphql, paint, season
 
-USER = "KoRrNiK"
 TOP = 5
 COL_W = 180  # five stat columns over the full width, lined up with the social buttons
 BAR_X, BAR_Y, BAR_W = 160, 132, 708
@@ -74,8 +73,9 @@ CARD = Template("""\
 </svg>
 """.replace("$glow", glow("stats")))
 
-# light is derived from dark; language colors are inserted after recoloring, so they stay linguist colors
-THEMES = {"stats.svg": CARD, "stats-light.svg": Template(recolor(CARD.template, LIGHT))}
+def themes(holiday: str | None) -> dict[str, Template]:
+    # light is derived from dark; language colors are inserted after recoloring, so they stay linguist colors
+    return {name: Template(paint(CARD.template, light, holiday)) for name, light in (("stats.svg", False), ("stats-light.svg", True))}
 
 
 def api(path: str):
@@ -162,7 +162,7 @@ def main(out_dir: str) -> None:
     colors = linguist_colors(fetch(LINGUIST).decode("utf-8"))
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    for name, card in THEMES.items():
+    for name, card in themes(season()).items():
         (out / name).write_text(render(card, stats, langs, colors), encoding="utf-8")
 
 

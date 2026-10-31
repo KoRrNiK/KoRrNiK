@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from string import Template
 
-from common import LIGHT, esc, fetch, glow, recolor
+from common import LIGHT, esc, fetch, glow, paint, recolor, season
 
 USER_ID = "292279578389643264"
 IDLE_TEXT = "probably doing something else..."
@@ -67,15 +67,15 @@ CARD = Template("""\
 """.replace("$glow", glow("social")))
 
 
-# output file -> (template, status palette); light is derived from dark so both stay in sync,
-# and only the template is recolored, never the Discord text that goes into it
-THEMES = {
-    "discord.svg": (CARD, STATUS),
-    "discord-light.svg": (
-        Template(recolor(CARD.template, LIGHT)),
-        {key: (recolor(color, LIGHT), label) for key, (color, label) in STATUS.items()},
-    ),
-}
+def themes(holiday: str | None) -> dict[str, tuple[Template, dict]]:
+    """Output file -> (template, status palette). Light is derived from dark so both stay in sync. Only the
+    template is recolored, never the Discord text that goes into it, and status colors keep their meaning
+    in every season."""
+    return {
+        name: (Template(paint(CARD.template, light, holiday)),
+               {key: (recolor(color, LIGHT) if light else color, label) for key, (color, label) in STATUS.items()})
+        for name, light in (("discord.svg", False), ("discord-light.svg", True))
+    }
 
 
 def current_activity(data: dict) -> tuple[str, str]:
@@ -125,7 +125,7 @@ def main(out_dir: str) -> None:
     avatar = fetch(avatar_url)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    for name, (card, status) in THEMES.items():
+    for name, (card, status) in themes(season()).items():
         (out / name).write_text(render(data, avatar, card, status), encoding="utf-8")
 
 

@@ -1,4 +1,4 @@
-"""Shared helpers for the generated README cards and the light-theme assets."""
+"""Shared helpers for the generated README cards and the static assets."""
 
 import html
 import json
@@ -36,6 +36,29 @@ LIGHT = {
 }
 HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
 
+USER = "KoRrNiK"
+# GitHub's holiday palettes for the contribution graph (Primer primitives 11.10), used while GitHub itself
+# shows them: they replace the green side of every card, the purple side suits both seasons as it is.
+# Keys are base dark colors, as in LIGHT; each season has a (dark, light) pair of tables.
+SEASONS = {
+    "halloween": (
+        {"#0e4429": "#fac68f", "#006d32": "#c46212", "#26a641": "#984b10", "#39d353": "#e3d04f",  # levels 1-4
+         "#034525": "#984b10", "#0f6d31": "#c46212", "#00c647": "#f68c41",  # header cells, lines
+         "#1a7f37": "#c46212", "#56d364": "#f68c41", "#3fb950": "#f68c41", "#7ee787": "#e3d04f"},  # glow, accents
+        {"#0e4429": "#f0db3d", "#006d32": "#ffd642", "#26a641": "#f68c41", "#39d353": "#1f2328",
+         "#034525": "#f0db3d", "#0f6d31": "#ffd642", "#00c647": "#f68c41",
+         "#1a7f37": "#fdbb7d", "#56d364": "#bc4c00", "#3fb950": "#bc4c00", "#7ee787": "#f68c41"},
+    ),
+    "winter": (
+        {"#0e4429": "#0c2d6b", "#006d32": "#1158c7", "#26a641": "#58a6ff", "#39d353": "#cae8ff",
+         "#034525": "#0c2d6b", "#0f6d31": "#1158c7", "#00c647": "#58a6ff",
+         "#1a7f37": "#1158c7", "#56d364": "#58a6ff", "#3fb950": "#58a6ff", "#7ee787": "#cae8ff"},
+        {"#0e4429": "#b6e3ff", "#006d32": "#54aeff", "#26a641": "#0969da", "#39d353": "#0a3069",
+         "#034525": "#b6e3ff", "#0f6d31": "#54aeff", "#00c647": "#0969da",
+         "#1a7f37": "#9fd3ff", "#56d364": "#0969da", "#3fb950": "#0969da", "#7ee787": "#54aeff"},
+    ),
+}
+
 # Soft light spots on the box edges. A box's bottom spot matches the next box's top spot (same side, same color),
 # so the light seems to continue across the gap. The static assets (header, terminal, social buttons) carry
 # copies of their spots.
@@ -59,6 +82,23 @@ def glow(box: str, shift: int = 0) -> str:
 def recolor(text: str, table: dict[str, str]) -> str:
     # one pass, so a color that is both a key and a value is never remapped twice
     return HEX.sub(lambda m: table.get(m.group(0).lower(), m.group(0)), text)
+
+
+def paint(svg: str, light: bool, holiday: str | None) -> str:
+    """Base dark colors -> the published ones: the light theme and/or the holiday palette, in one pass."""
+    table = dict(LIGHT) if light else {}
+    if holiday:
+        table.update(SEASONS[holiday][1 if light else 0])
+    return recolor(svg, table)
+
+
+def season() -> str | None:
+    """The holiday palette GitHub shows on the contribution graph right now, read from the graph itself,
+    so the cards switch on and back exactly when GitHub does."""
+    page = fetch(f"https://github.com/users/{USER}/contributions").decode("utf-8")
+    found = re.search(r'data-holiday="([\w-]+)"', page)
+    # match by name, so e.g. "winter_solstice" still picks the winter palette
+    return next((name for name in SEASONS if found and name in found.group(1)), None)
 
 
 def fetch(url: str, headers: dict[str, str] | None = None, body: bytes | None = None) -> bytes:

@@ -4,9 +4,8 @@ import sys
 from pathlib import Path
 from string import Template
 
-from common import LIGHT, glow, graphql, recolor
+from common import USER, glow, graphql, paint, season
 
-USER = "KoRrNiK"
 CALENDAR_QUERY = """
 query($login: String!) {
   user(login: $login) {
@@ -297,11 +296,12 @@ def render(weeks: list[list[dict]]) -> str:
 def main(out_dir: str) -> None:
     calendar = graphql(CALENDAR_QUERY, {"login": USER})["user"]["contributionsCollection"]["contributionCalendar"]
     svg = render([week["contributionDays"] for week in calendar["weeks"]])
+    holiday = season()
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    (out / "snake.svg").write_text(svg, encoding="utf-8")
     # no external text in this card, so the whole output can be recolored
-    (out / "snake-light.svg").write_text(recolor(svg, LIGHT), encoding="utf-8")
+    for name, light in (("snake.svg", False), ("snake-light.svg", True)):
+        (out / name).write_text(paint(svg, light, holiday), encoding="utf-8")
 
 
 if __name__ == "__main__":
