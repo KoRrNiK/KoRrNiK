@@ -28,4 +28,9 @@ jobs:
           git init -q -b snake
           git add snake.svg snake-light.svg
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "chore: update snake card"
-          git push -f -q "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" snake
+          # GitHub rejects a push with a 500 now and then
+          for wait in 15 45 0; do
+            git push -f -q "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" snake && exit 0
+            sleep $wait
+          done
+          exit 1

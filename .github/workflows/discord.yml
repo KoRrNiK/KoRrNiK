@@ -26,4 +26,9 @@ jobs:
           git init -q -b discord
           git add discord.svg discord-light.svg
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "chore: update discord card"
-          git push -f -q "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" discord
+          # GitHub rejects a push with a 500 now and then
+          for wait in 15 45 0; do
+            git push -f -q "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" discord && exit 0
+            sleep $wait
+          done
+          exit 1
