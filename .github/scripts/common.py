@@ -5,6 +5,8 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 
 # Dark -> light colors for GitHub's light themes, shared by every card and static asset.
@@ -35,6 +37,8 @@ LIGHT = {
     "#800080": "#e2b6f2",  # purple glow
 }
 HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
+# GitHub's contribution page, Lanyard and the APIs fail now and then (504s, timeouts), so requests are retried
+RETRY_WAITS = (5, 15, 45)
 
 USER = "KoRrNiK"
 # GitHub's holiday palettes for the contribution graph (Primer primitives 11.10), used while GitHub itself
@@ -104,6 +108,15 @@ def season() -> str | None:
 def fetch(url: str, headers: dict[str, str] | None = None, body: bytes | None = None) -> bytes:
     # a body turns the request into a POST
     req = urllib.request.Request(url, data=body, headers={"User-Agent": "korrnik-profile-readme", **(headers or {})})
+    for wait in RETRY_WAITS:
+        try:
+            with urllib.request.urlopen(req, timeout=20) as res:
+                return res.read()
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as error:
+            if isinstance(error, urllib.error.HTTPError) and error.code < 500 and error.code != 429:
+                raise  # a client error won't go away by itself
+            print(f"{url}: {error!r}, retrying in {wait}s", file=sys.stderr)
+            time.sleep(wait)
     with urllib.request.urlopen(req, timeout=20) as res:
         return res.read()
 
